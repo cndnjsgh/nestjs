@@ -9,7 +9,11 @@ import { moneyrequestdto } from 'src/dto/money.request.dto';
 import { fitnessrequestdto } from 'src/dto/fitness.request.dto';
 @Controller('cndnjsgh')
 export class CndnjsghController {
-    constructor(private readonly cndnjsghService:CndnjsghService){}
+    private readonly cndnjsghService:CndnjsghService;
+    constructor(ccndnjsghservice:CndnjsghService)
+    {
+        this.cndnjsghService=ccndnjsghservice;
+    }
 
     @Get('1')
     gettext():string
@@ -36,7 +40,7 @@ export class CndnjsghController {
     {
         return this.cndnjsghService.moneyexchange(money);
     }
-    @Post('fitness') //운동결과 어느정도의 칼로리가 소모됐는지 알려줌
+    @Post('fitness') //운동결과 어느정도의 칼로리가 소모됐는지 알려줌(3)
     onExercise(@Body() fitness:fitnessrequestdto)
     {
         return this.cndnjsghService.kcal(fitness);
